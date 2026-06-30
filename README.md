@@ -2,7 +2,7 @@
 
 1. Clone Repository
 ```
-git clone https://github.com/themewagon/aistarterkit.git
+
 ```
 2. Install Dependencies
 ```
