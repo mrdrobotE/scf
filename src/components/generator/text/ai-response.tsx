@@ -7,6 +7,8 @@ type PropsType = {
 };
 
 export default function AiResponse({ response }: PropsType) {
+  if (!response) return null;
+  
   return (
     <div className="max-w-3xl whitespace-pre-wrap">
       <div className="bg-white dark:bg-white/5 shadow-theme-xs rounded-3xl rounded-bl-lg py-4 px-5 max-w-3xl leading-7">

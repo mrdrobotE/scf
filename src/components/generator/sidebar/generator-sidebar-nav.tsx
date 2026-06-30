@@ -1,15 +1,14 @@
 'use client';
 
-import { TextGeneratorIcon } from '@/icons/icons';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const navItems = [
   {
     href: '/text-generator',
-    label: 'Text Generator',
-    icon: <TextGeneratorIcon className="size-8" />,
+    label: 'SCF AI DocumentationAssistant',
   },
 ];
 
@@ -36,7 +35,22 @@ export default function GeneratorSidebarNav() {
                   : 'dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-white/90 text-gray-500 hover:bg-gray-100 hover:text-gray-800'
               )}
             >
-              {item.icon}
+              <div className="relative w-6 h-6 flex-shrink-0">
+                <Image
+                  src="/images/logo-black.svg"
+                  alt="SCF AI"
+                  width={24}
+                  height={24}
+                  className="block dark:hidden"
+                />
+                <Image
+                  src="/images/logo-white.svg"
+                  alt="SCF AI"
+                  width={24}
+                  height={24}
+                  className="hidden dark:block"
+                />
+              </div>
               {item.label}
             </Link>
           );

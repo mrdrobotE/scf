@@ -6,6 +6,7 @@ import { toast } from 'sonner';
 import { useStickToBottom } from 'use-stick-to-bottom';
 import AiResponse from './text/ai-response';
 import UserMessage from './text/user-message';
+import Image from 'next/image';
 
 type PropsType = {
   useChat: UseChatHelpers & {
@@ -51,29 +52,6 @@ export function RenderMessage({ useChat, isThinking }: PropsType) {
                       <UserMessage
                         key={`${message.id}-${i}`}
                         message={part.text}
-                        showActions={
-                          // showActions is true only for the last user message
-                          messages.length - 1 === messageIdx ||
-                          // if ai responded it should be second to last
-                          messages.length - 2 === messageIdx
-                        }
-                        onEdit={async (newMessage) => {
-                          setMessages((prev) => {
-                            return prev.map((prevMsg) => {
-                              if (prevMsg.id !== message.id) return prevMsg;
-
-                              return {
-                                ...prevMsg,
-                                parts: prevMsg.parts?.map((part) => ({
-                                  ...part,
-                                  text: newMessage,
-                                })),
-                              };
-                            });
-                          });
-
-                          reload();
-                        }}
                       />
                     );
                   }
@@ -91,8 +69,28 @@ export function RenderMessage({ useChat, isThinking }: PropsType) {
         })}
 
         {isThinking && (
-          <div className="text-gray-500 font-medium">
-            💭 Model is thinking...
+          <div className="flex items-center gap-3 text-gray-500 font-medium">
+            <div className="relative w-6 h-6 flex items-center justify-center">
+              {/* Light mode logo */}
+              <Image
+                src="/images/logo-black.svg"
+                alt="SCF AI"
+                width={24}
+                height={24}
+                className="block dark:hidden animate-spin"
+                style={{ animationDuration: '2s' }}
+              />
+              {/* Dark mode logo */}
+              <Image
+                src="/images/logo-white.svg"
+                alt="SCF AI"
+                width={24}
+                height={24}
+                className="hidden dark:block animate-spin"
+                style={{ animationDuration: '2s' }}
+              />
+            </div>
+            <span className="flex items-center">SCF AI is thinking...</span>
           </div>
         )}
       </div>
