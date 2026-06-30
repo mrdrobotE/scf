@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { ThemeProvider } from 'next-themes';
 import { Onest } from 'next/font/google';
-// @ts-ignore
+// src/app/layout.tsx
+// @ts-expect-error - CSS import
 import './globals.css';
 import { ToasterProvider } from './providers/toaster';
 

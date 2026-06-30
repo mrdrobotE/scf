@@ -8,12 +8,6 @@ import {
   Eye, 
   Users, 
   TrendingUp,
-  Shield,
-  Zap,
-  Network,
-  Database,
-  Brain,
-  Lock
 } from 'lucide-react';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
